@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const controllers = require('../controllers');
+const ctrlRestaurants = require('../controllers/restaurants');
 
 /* GET home page. */
-router.get('/', controllers.home);
-router.get('/restraunt', controllers.restrauntInfo);
+router.get('/', ctrlRestaurants.restaurantList);
+// router.get('/restraunt', controllers.restrauntInfo);
 
 module.exports = router;

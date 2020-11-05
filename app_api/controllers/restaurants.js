@@ -37,6 +37,7 @@ const restaurantsListByDistance = async (req, res) => {
         name: result.name,
         address: result.address,
         rating: result.rating,
+        image: result.image,
         distance: `${result.distance.calculated.toFixed()}m`
       };
     });
