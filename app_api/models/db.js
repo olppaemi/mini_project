@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const dbURL = 'mongodb://localhost/Mini';
-
+const dbURL = process.env.MONGO_DB;
 const connect = () => {
   setTimeout(() => mongoose.connect(dbURL, {
     useNewUrlParser: true,
@@ -10,7 +11,7 @@ const connect = () => {
 }
 
 mongoose.connection.on('connected', () => {
-  console.log(`Mongoose connected to ${dbURL}`);
+  console.log(`Mongoose connected`);
 });
 
 mongoose.connection.on('disconnected', () => {
@@ -33,6 +34,12 @@ process.once('SIGUSR2', () => {
 
 process.on('SIGINT', () => {
   gracefulShutdown('app termination', () => {
+    process.exit(0);
+  });
+});
+
+process.on('SIGTERM', () => {
+  gracefulShutdown('app shutdown', () => {
     process.exit(0);
   });
 });
