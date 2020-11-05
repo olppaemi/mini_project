@@ -3,6 +3,39 @@ html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
+
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/all.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      a.navbar-brand(href="#") 음식점 전체보기
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbars")
+        span.navbar-togller-icon
+      .collapse.navbar-collapse#navbars
+        ul.navbar-nav.mr-auto
+          li.nav-item.active 
+            a.nav-link(href="#") 프랜차이즈
+          li.nav-item 
+            a.nav-link(href="#") 치킨
+          li.nav-item 
+            a.nav-link(href="#") 피자/양식
+          li.nav-item 
+            a.nav-link(href="#") 중국집
+          li.nav-item 
+            a.nav-link(href="#") 한식
+          li.nav-item 
+            a.nav-link(href="#") 일식/돈까스
+          li.nav-item 
+            a.nav-link(href="#") 족발/보쌈
+    .container.content
+      block content
+
+
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+           integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+           crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js" 
+           integrity="sha512-53CQcu9ciJDlqhK7UD8dZZ+TF2PFGZrOngEYM/8qucuQba+a+BXOIRsp9PoMNJI3ZeLMVNIxIfZLbG/CdHI5PA==" 
+           crossorigin="anonymous")
+    script(src='/javascripts/bootstrap.min.js')

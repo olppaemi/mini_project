@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .row
+    for restaurant in restaurants
+      .col-12.col-md-6
+        .card.bg-light
+          .row.no-gutters
+            .col-md-4
+              img(src='/' + restaurant.image width="100px")
+            .col-md-8
+              .card-body
+                h6 
+                  a(href='#')= restaurant.name
+                  i.fas.fa-star
+                  span= restaurant.rating
+                  span.badge.badge-pill.badge-dark.float-right= restaurant.distance
+                p.address= restaurant.address
+    
+      
+          
+      
+
