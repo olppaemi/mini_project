@@ -8,8 +8,8 @@ block content
     .container 
       ul.grid-container 
         for restaurant in restaurants
-          li 
-            a(href="./")  
-              img(alt= "이미지경로를 확인해주세요" src='/' + restaurant.image) 
+          li  
+            a(href=restaurant.category)   
+              img(alt= "이미지 경로를 확인해주세요" src='/' + restaurant.image) 
               .restaurantName= restaurant.category 
         
