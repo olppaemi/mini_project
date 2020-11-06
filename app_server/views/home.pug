@@ -1,45 +1,43 @@
 extends layout  
+
 block content 
-  
   head
     link(rel='stylesheet', href='/stylesheets/home.css')   
  
   body  
     .container 
-      ul.grid-container
+      ul.grid-container 
+        for restaurant in restaurants
+          li 
+            a(href="./")  
+              img(src='/' + restaurant.image)
+              //img( src="/images/도미노피자.jpg")  
+              .restaurantName= restaurant.category 
+        //  
+          li 
+            a(href="./")  
+              img( src="/images/BBQ.jpg")  
+              .restaurantName 치킨 
+              
+          li 
+            a(href="./restraunt")  
+              img( src="/images/도미노피자.jpg") 
+  
+              .restaurantName 피자/양식  
 
-        li 
-          a(href="./restaurants")  
-            img( src="/images/도미노피자.jpg") 
- 
-            .restaurantName 프렌차이즈 
-             
-        
-        li 
-          a(href="./restaurants/:2")  
-            img( src="/images/BBQ.jpg") 
- 
-            .restaurantName 치킨 
-             
-        li 
-          a(href="./chickenDetail")  
-            img( src="/images/도미노피자.jpg") 
- 
-            .restaurantName 피자/양식  
+          li 
+            a(href="./chickenDetail")  
+              img( src="/images/샤오차이.jpg") 
+  
+              .restaurantName 중국집        
+          
+          li 
+            a(href="./chickenDetail")  
+              img( src="/images/소공동뚝배기집.jpg") 
+  
+              .restaurantName 한식  
+          li 
+            a(href="./chickenDetail")  
+              img( src="/images/이백장돈까스.jpg") 
 
-        li 
-          a(href="./chickenDetail")  
-            img( src="/images/샤오차이.jpg") 
- 
-            .restaurantName 중국집        
-        
-        li 
-          a(href="./chickenDetail")  
-            img( src="/images/소공동뚝배기집.jpg") 
- 
-            .restaurantName 한식  
-        li 
-          a(href="./chickenDetail")  
-            img( src="/images/이백장돈까스.jpg") 
-
-            .restaurantName 일식/돈까스   
+              .restaurantName 일식/돈까스   

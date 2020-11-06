@@ -3,6 +3,12 @@ const router = express.Router();
 const ctrlRestaurants = require('../controllers/restaurants');
 const ctrlReviews = require('../controllers/reviews');
 const ctrlMenu = require('../controllers/menu');
+const ctrlHome = require('../controllers/home');
+
+// home
+router
+  .route('/home')
+  .get(ctrlHome.restaurantsCategory) 
 
 // restaurants
 router
