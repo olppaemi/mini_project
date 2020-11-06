@@ -1,0 +1,31 @@
+body{
+  background-color:#d1e0e0;
+}
+img{/*이미지 크기 조정*/
+  max-width:100%;
+  width:400px;
+  height:250px;
+}
+.grid-container { 
+  list-style:none;
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto ;
+  grid-gap: 30px; 
+  padding: 20px;  
+} 
+.grid-container > li {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 30px;
+  font-size: 30px;
+} 
+.grid-container > li > a {
+  color:black;
+}  
+.restaurantName { 
+  text-align: left; 
+  padding-top: 10px;
+  font-size: 30px;
+}
+ 
