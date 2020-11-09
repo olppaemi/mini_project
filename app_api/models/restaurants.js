@@ -44,7 +44,7 @@ const restaurantSchema = new mongoose.Schema({
     required: true
   },
   category: {
-    type: String
+    type: [String]
   },
   image: {
     type: String

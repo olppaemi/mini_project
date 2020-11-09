@@ -15,7 +15,7 @@ const restaurantsListByDistance = async (req, res) => {
     maxDistance: 20000,
   };
 
-  if (!lng || !lat) {
+  if ((!lng && lng !== 0) || (!lat && lat !== 0)) {
     return res.status(404).json({"message": "lng and lat query parameters are required"});
   }
 
@@ -35,10 +35,11 @@ const restaurantsListByDistance = async (req, res) => {
       return {
         _id: result._id,
         name: result.name,
+        category: result.category,
         address: result.address,
         rating: result.rating,
         image: result.image,
-        distance: `${result.distance.calculated.toFixed()}m`
+        distance: `${result.distance.calculated.toFixed()}`
       };
     });
     res.status(200).json(restaurants);
@@ -49,7 +50,7 @@ const restaurantsListByDistance = async (req, res) => {
 const restaurantsCreate = (req, res) => {
   Rest.create({
     name: req.body.name,
-    category: req.body.category,
+    category: req.body.category.split(","),
     address: req.body.address,
     coords: {
       type: "Point",

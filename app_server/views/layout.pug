@@ -4,30 +4,36 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
 
+    link(rel="shortcut icon" href="#")
+
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/all.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     nav.navbar.navbar-expand-md.navbar-dark.bg-dark
-      a.navbar-brand(href="#") 음식점 전체보기
+      a.navbar-brand(href="/restaurants/") 음식점 전체보기
       button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbars")
         span.navbar-togller-icon
       .collapse.navbar-collapse#navbars
         ul.navbar-nav.mr-auto
           li.nav-item.active 
-            a.nav-link(href="#") 프랜차이즈
+            a.nav-link(href="/restaurants/프랜차이즈") 프랜차이즈
           li.nav-item 
-            a.nav-link(href="#") 치킨
+            a.nav-link(href="/restaurants/치킨") 치킨
           li.nav-item 
-            a.nav-link(href="#") 피자/양식
+            a.nav-link(href="/restaurants/피자양식") 피자/양식
           li.nav-item 
-            a.nav-link(href="#") 중국집
+            a.nav-link(href="/restaurants/중국집") 중국집
           li.nav-item 
-            a.nav-link(href="#") 한식
+            a.nav-link(href="/restaurants/한식") 한식
           li.nav-item 
-            a.nav-link(href="#") 일식/돈까스
+            a.nav-link(href="/restaurants/일식돈까스") 일식/돈까스
           li.nav-item 
-            a.nav-link(href="#") 족발/보쌈
+            a.nav-link(href="/restaurants/족발보쌈") 족발/보쌈
+          li.nav-item 
+            a.nav-link(href="/restaurants/분식") 분식
+          li.nav-item 
+            a.nav-link(href="/restaurants/카페디저트") 카페/디저트
     .container.content
       block content
 
