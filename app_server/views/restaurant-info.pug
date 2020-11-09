@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  .row.banner
+    .col-12
+      h1= restaurant.name
+  .row
+    .col-12.col-lg-10
+      .row
+        .col-12.col-md-6
+          p 
+            - let rating = Math.floor(restaurant.rating)
+            - for (let i = 1; i <= rating; i++)
+              i.fas.fa-star
+            - for (let i = rating; i < 5; i++)
+              i.far.fa-star
+            | &nbsp;#{restaurant.rating}
+          p= restaurant.address
+          .card
+            .card-header
+              h5.card-title 영업시간
+            .card-body
+              p.card-text= restaurant.openingTime
+          .card
+            .card-header
+              h5.card-title 전화번호
+            .card-body              
+              p.card-text= restaurant.phone
+        .col-12.col-md-6
+          .card
+            .card-body
+              - let key = process.env.GOOGLE_MAP_KEY
+              img.img-fluid(src=`https://maps.googleapis.com/maps/api/staticmap?center=${restaurant.coords.lat},${restaurant.coords.lng}&zoom=17&size=400x350&sensor=false&markers=${restaurant.coords.lat},${restaurant.coords.lng}&scale=2&key=${key}`)
+      .row
+        .col-12
+          .card
+            .card-body
+              h5.card-title 리뷰
+              each review in restaurant.reviews
+                .row
+                  .col-12
+                    span.reviewRating
+                      - let rating = review.rating
+                      - for (let i = 1; i <= rating; i++)
+                        i.fas.fa-star
+                      - for (let i = rating; i < 5; i++)
+                        i.far.fa-star
+                    span.reviewAuthor= review.author
+                    small.reviewTimestamp= review.createdOn
+                  .col-12
+                    p !{(review.reviewText).replace(/\n/g, '<br />')}
+    
