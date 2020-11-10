@@ -78,8 +78,8 @@ const restaurantInfo = (req, res) => {
   request(requestOptions, (err, response, body) => {
     const restaurant = body; 
     restaurant.coords = {
-      lng: body.coords.coordinates[0],
-      lat: body.coords.coordinates[1]
+      lng: body.coords[0],
+      lat: body.coords[1]
     };
     renderRestaurantInfo(req, res, restaurant);
   });
