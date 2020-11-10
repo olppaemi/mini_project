@@ -131,8 +131,7 @@ const restaurantsDeleteOne = (req, res) => {
   } else {
     res.status(404).json({"message": "No Restaurant"});
   }
-};
-
+}; 
 module.exports = {
   restaurantsListByDistance,
   restaurantsCreate,
