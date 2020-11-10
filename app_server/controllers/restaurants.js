@@ -75,14 +75,15 @@ const restaurantInfo = (req, res) => {
     method: 'GET',
     json: {}
   };
-  request(requestOptions, (err, response, body) => {
+  request(requestOptions, (err, {statusCode}, body) => {
     const restaurant = body;
-    //에러나서 81-84주석함ㅠㅠ
-    //restaurant.coords = {
-    //  lng: body.coords.coordinates[0],
-    //  lat: body.coords.coordinates[1]
-    //};
-    renderRestaurantInfo(req, res, restaurant);
+    if (statusCode === 200) {
+      restaurant.coords = {
+        lng: body.coords.coordinates[0],
+        lat: body.coords.coordinates[1]
+      };
+      renderRestaurantInfo(req, res, restaurant);
+    }    
   });
 };
  
