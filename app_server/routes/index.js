@@ -9,5 +9,5 @@ router.get('/', ctrlHome.categoryList);
 router.get('/restaurants/:category?', ctrlRestaurants.restaurantList);
 router.get('/:restaurantid', ctrlRestaurants.restaurantInfo);
 
-
+ 
 module.exports = router;

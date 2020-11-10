@@ -1,6 +1,8 @@
 extends layout
+ 
+block content 
+  link(rel='stylesheet', href='/stylesheets/restaurant-info.css')   
 
-block content
   .row.banner
     .col-12
       h1= restaurant.name
@@ -49,4 +51,30 @@ block content
                     small.reviewTimestamp= review.createdOn
                   .col-12
                     p !{(review.reviewText).replace(/\n/g, '<br />')}
-    
+      
+      .row.review
+        .col-12
+          .card
+            .card-header 
+              h5.card-title 리뷰 작성하기 
+            .card-body 
+                .row
+                  .col-12 
+                    form(action="./reveiwRegister" method="post")
+                      .author 
+                        h5 작성자
+                        input(type="text" name="author")  
+                      .rating 
+                        h5 평점
+                        select
+                          //option &#x
+                          option ⭐
+                          option ⭐⭐
+                          option ⭐⭐⭐
+                          option ⭐⭐⭐⭐
+                          option ⭐⭐⭐⭐⭐
+                      .reviewText 
+                        h5 리뷰내용
+                        input(type="text" name="reviewText") 
+                    
+                      button.btn.btn-outline-dark(type="submit") 작성하기
