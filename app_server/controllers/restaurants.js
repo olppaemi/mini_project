@@ -76,12 +76,11 @@ const restaurantInfo = (req, res) => {
     json: {}
   };
   request(requestOptions, (err, response, body) => {
-    const restaurant = body;
-    //에러나서 81-84주석함ㅠㅠ
-    //restaurant.coords = {
-    //  lng: body.coords.coordinates[0],
-    //  lat: body.coords.coordinates[1]
-    //};
+    const restaurant = body; 
+    restaurant.coords = {
+      lng: body.coords.coordinates[0],
+      lat: body.coords.coordinates[1]
+    };
     renderRestaurantInfo(req, res, restaurant);
   });
 };
