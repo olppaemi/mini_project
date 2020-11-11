@@ -1,10 +1,11 @@
 body{
   background-color:#d1e0e0;
 }
+ 
 img{/*이미지 크기 조정*/
   max-width:70%;
   width:400px;
-  height:250px;
+  height:auto;
 }
 .grid-container { 
   list-style:none; 
