@@ -42,10 +42,7 @@ block content
             .card-body.menu
               ul.list-group 
                 each menu in restaurant.menu  
-                  li
-                    //img.img(src=`${menu.image}` width="90px" height="90px")
-                    //img.img(src=`${restaurant.image}` width="90px")
-
+                  li 
                     -if(menu.image == null)
                       img.img(src=`${restaurant.image}` width="90px") 
                     -else
