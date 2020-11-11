@@ -62,6 +62,22 @@ const renderRestaurantListPage = (req, res, restaurants) => {
   });
 };
 
+const showError = (req, res, status) => {
+  let title = `${status}error`;
+  let content = '';
+
+  if (status === 404) {
+    content = '죄송합니다.\n요청하신 페이지를 찾을 수 없습니다.';
+  } else {
+    content = '죄송합니다.\n잘못된 응답을 전송했습니다.';
+  }
+  res.status(status);
+  res.render('error-text', {
+    title,
+    content
+  });
+};
+
 const renderRestaurantInfo = (req, res, restaurant) => {
   res.render('restaurant-info', {
     restaurant
@@ -75,17 +91,44 @@ const restaurantInfo = (req, res) => {
     method: 'GET',
     json: {}
   };
-  request(requestOptions, (err, response, body) => {
-    const restaurant = body; 
-    restaurant.coords = {
-      //lng: body.coords[0],
-      //lat: body.coords[1]
-    };
-    renderRestaurantInfo(req, res, restaurant);
+  request(requestOptions, (err, {statusCode}, body) => {
+    const restaurant = body;
+    if (statusCode === 200) {
+      restaurant.coords = {
+        lng: body.coords.coordinates[0],
+        lat: body.coords.coordinates[1]
+      };
+      renderRestaurantInfo(req, res, restaurant);
+    } else {
+      showError(req, res, statusCode);
+    }
+  });
+};
+
+const addReview = (req, res) => {
+  const restaurantid = req.params.restaurantid;
+  const path = `/api/restaurants/${restaurantid}/reviews`;
+  const postdata = {
+    author: req.body.author,
+    rating: parseInt(req.body.rating, 10),
+    reviewText: req.body.reviewText
+  };
+  const requestOptions = {
+    url: `${apiOptions.server}${path}`,
+    method: 'POST',
+    json: postdata
+  };
+  request(requestOptions, (err, {statusCode}, body) => {
+    if (statusCode === 201) {
+      res.redirect(`/${restaurantid}`);
+    } else {
+      showError(req, res, statusCode);
+    }
   });
 };
  
 module.exports = {
   restaurantList,
-  restaurantInfo 
+  restaurantInfo,
+  addReview
 };

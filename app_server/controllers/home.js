@@ -1,5 +1,3 @@
-
-
 const categoryList = (req, res) => {
   res.render('home', {});
 };
