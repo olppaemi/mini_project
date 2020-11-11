@@ -1,3 +1,32 @@
+.card-body.menu{ 
+  padding: 0px; 
+}
+.card-body.menu>ul{ 
+  list-style: none;
+  padding-left: 0px;
+  padding-right: 10px;
+} 
+.card-body.menu>ul>h5{   
+  padding: 20px 20px;
+}
+.card-body.menu>ul>li{ 
+  padding-top: 10px;
+  padding-left: 0px;  
+  border-radius: 5px;
+  text-indent: 1.5em;
+} 
+.card-body.menu>ul>li>.name{ 
+  font-size: 20px;
+}  
+.card-body.menu>ul>li>.img{ 
+  float: right;
+} 
+.card-body.menu>ul>li>.description{ 
+  color: gray;
+} 
+.card-body.menu>ul>li>hr{
+  margin-bottom: 0; 
+}
 .rating{
   padding-top: 20px; 
 }

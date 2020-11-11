@@ -33,6 +33,31 @@ block content
             .card-body
               - let key = process.env.GOOGLE_MAP_KEY
               img.img-fluid(src=`https://maps.googleapis.com/maps/api/staticmap?center=${restaurant.coords.lat},${restaurant.coords.lng}&zoom=17&size=400x350&sensor=false&markers=${restaurant.coords.lat},${restaurant.coords.lng}&scale=2&key=${key}`)
+      
+      .row.menu
+        .col-12
+          .card
+            .card-header
+              h5.card-title 메뉴
+            .card-body.menu
+              ul.list-group 
+                each menu in restaurant.menu  
+                  li
+                    //img.img(src=`${menu.image}` width="90px" height="90px")
+                    //img.img(src=`${restaurant.image}` width="90px")
+
+                    -if(menu.image == null)
+                      img.img(src=`${restaurant.image}` width="90px") 
+                    -else
+                      img.img(src=`${menu.image}` width="90px" height="90px")
+                    .name= menu.name  
+                    - if(menu.description == null) 
+                      br
+                    .description= menu.description
+                    .price #{menu.price} 원 
+                    hr 
+                -if(restaurant.menu == "")
+                    h5 메뉴가 아직 등록되지 않았습니다. 
       .row
         .col-12
           .card
