@@ -1,9 +1,33 @@
+.card-body.review { 
+  padding: 0px ; 
+}
+.card-body.review>ul {
+  list-style: none; 
+  padding-right: 10px; 
+}
+.card-body.review>ul>li{
+  margin-top: 10px;
+  margin-left: 20px;   
+}
+.card-body.review>ul>li>div>div{
+  margin-top: 10px; 
+}
+span.reviewRating{
+  display: inline-block;
+  width: 120px;
+} 
+span.reviewAuthor{
+  display: inline-block;
+  width: 70px;
+} 
+.card-body.review>ul>li>hr{
+  margin-bottom: 0; 
+}
 .card-body.menu{ 
   padding: 0px; 
 }
 .card-body.menu>ul{ 
-  list-style: none;
-  padding-left: 0px;
+  list-style: none; 
   padding-right: 10px;
 } 
 .card-body.menu>ul>h5{   
@@ -11,9 +35,8 @@
 }
 .card-body.menu>ul>li{ 
   padding-top: 10px;
-  padding-left: 0px;  
-  border-radius: 5px;
-  text-indent: 1.5em;
+  padding-left: 20px;  
+  border-radius: 5px; 
 } 
 .card-body.menu>ul>li>.name{ 
   font-size: 20px;

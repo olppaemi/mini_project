@@ -58,22 +58,28 @@ block content
       .row
         .col-12
           .card
-            .card-body
+            .card-header
               h5.card-title 리뷰
-              each review in restaurant.reviews
-                .row
-                  .col-12
-                    span.reviewRating
-                      - let rating = review.rating
-                      - for (let i = 1; i <= rating; i++)
-                        i.fas.fa-star
-                      - for (let i = rating; i < 5; i++)
-                        i.far.fa-star
-                    span.reviewAuthor= review.author
-                    small.reviewTimestamp= review.createdOn
-                  .col-12
-                    p !{(review.reviewText).replace(/\n/g, '<br />')}
-      
+            .card-body.review 
+              ul.list-group
+                each review in restaurant.reviews
+                  li
+                    .row
+                      .col-12
+                        span.reviewAuthor #{review.author} 님 
+                        small.reviewTimestamp= review.createdOn 
+                      .col-12 
+                        span.reviewRating
+                          - let rating = review.rating
+                          - for (let i = 1; i <= rating; i++)
+                            i.fas.fa-star
+                          - for (let i = rating; i < 5; i++)
+                            i.far.fa-star
+                        
+                        
+                      .col-12
+                        p !{(review.reviewText).replace(/\n/g, '<br />')}
+                    hr
       .row.review
         .col-12
           .card
