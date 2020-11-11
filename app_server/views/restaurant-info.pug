@@ -41,7 +41,9 @@ block content
               h5.card-title 메뉴
             .card-body.menu
               ul.list-group 
+                -var menuCheck = 0;
                 each menu in restaurant.menu  
+                  -menuCheck+=1;
                   li 
                     -if(menu.image == null)
                       img.img(src=`${restaurant.image}` width="90px") 
@@ -52,7 +54,8 @@ block content
                       br
                     .description= menu.description
                     .price #{menu.price} 원 
-                    hr 
+                    -if(Object.keys(restaurant.menu).length != menuCheck) 
+                      hr  
                 -if(restaurant.menu == "")
                     h5 메뉴가 아직 등록되지 않았습니다. 
       .row
@@ -62,8 +65,10 @@ block content
               h5.card-title 리뷰
             .card-body.review 
               ul.list-group
+                -var reviewCheck = 0;
                 each review in restaurant.reviews
-                  li
+                  -reviewCheck+=1;
+                  li 
                     .row
                       .col-12
                         span.reviewAuthor #{review.author} 님 
@@ -74,12 +79,11 @@ block content
                           - for (let i = 1; i <= rating; i++)
                             i.fas.fa-star
                           - for (let i = rating; i < 5; i++)
-                            i.far.fa-star
-                        
-                        
+                            i.far.fa-star 
                       .col-12
-                        p !{(review.reviewText).replace(/\n/g, '<br />')}
-                    hr
+                        p !{(review.reviewText).replace(/\n/g, '<br />')}  
+                    -if(Object.keys(restaurant.reviews).length != reviewCheck) 
+                      hr 
       .row.review
         .col-12
           .card
