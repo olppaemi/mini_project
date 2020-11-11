@@ -60,19 +60,18 @@ block content
             .card-body 
                 .row
                   .col-12 
-                    form(action="./reveiwRegister" method="post")
+                    form(action="" method="post")
                       .author 
                         h5 작성자
                         input(type="text" name="author")  
                       .rating 
                         h5 평점
-                        select
-                          //option &#x
-                          option ⭐
-                          option ⭐⭐
-                          option ⭐⭐⭐
-                          option ⭐⭐⭐⭐
-                          option ⭐⭐⭐⭐⭐
+                        select(name="rating")                          
+                          option 5
+                          option 4
+                          option 3
+                          option 2
+                          option 1
                       .reviewText 
                         h5 리뷰내용
                         input(type="text" name="reviewText") 
