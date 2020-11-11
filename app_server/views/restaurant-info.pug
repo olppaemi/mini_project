@@ -16,7 +16,7 @@ block content
               i.fas.fa-star
             - for (let i = rating; i < 5; i++)
               i.far.fa-star
-            | &nbsp;#{restaurant.rating}
+            | &nbsp;#{restaurant.rating.toFixed(1)}
           p= restaurant.address
           .card
             .card-header
