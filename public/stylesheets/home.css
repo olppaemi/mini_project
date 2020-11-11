@@ -1,9 +1,7 @@
-body{
-  background-color:#333333;
-}
+ 
  
 img{/*이미지 크기 조정*/
-  max-width:70%;
+  max-width:90%;
   width:400px;
   height:auto;
 }
@@ -28,5 +26,6 @@ img{/*이미지 크기 조정*/
   text-align: left; 
   padding-top: 10px;
   font-size: 30px;
+  text-align: center;
 }
  
