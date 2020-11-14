@@ -7,7 +7,9 @@ const ctrlRestaurants = require('../controllers/restaurants');
 router.get('/', ctrlHome.categoryList);
 // router.get('/restaurants', ctrlRestaurants.restaurantList);
 router.get('/restaurants/:category?', ctrlRestaurants.restaurantList);
-router.get('/:restaurantid', ctrlRestaurants.restaurantInfo);
-
-
+router
+  .route('/:restaurantid')
+  .get(ctrlRestaurants.restaurantInfo)
+  .post(ctrlRestaurants.addReview);
+ 
 module.exports = router;

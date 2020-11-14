@@ -1,18 +1,16 @@
-body{
-  background-color:#d1e0e0;
-}
+ 
+ 
 img{/*이미지 크기 조정*/
-  max-width:100%;
+  max-width:90%;
   width:400px;
-  height:250px;
+  height:auto;
 }
 .grid-container { 
-  list-style:none;
-  padding-left: 20px;
+  list-style:none; 
   display: grid;
   grid-template-columns: auto auto auto ;
-  grid-gap: 30px; 
-  padding: 20px;  
+  grid-gap: 60px; 
+  padding: 100px;  
 } 
 .grid-container > li {
   background-color: rgba(255, 255, 255, 0.8);
@@ -22,10 +20,12 @@ img{/*이미지 크기 조정*/
 } 
 .grid-container > li > a {
   color:black;
+  text-decoration: none;
 }  
 .restaurantName { 
   text-align: left; 
   padding-top: 10px;
   font-size: 30px;
+  text-align: center;
 }
  

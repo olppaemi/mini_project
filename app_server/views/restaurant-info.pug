@@ -1,6 +1,8 @@
 extends layout
+ 
+block content 
+  link(rel='stylesheet', href='/stylesheets/restaurant-info.css')   
 
-block content
   .row.banner
     .col-12
       h1= restaurant.name
@@ -14,7 +16,7 @@ block content
               i.fas.fa-star
             - for (let i = rating; i < 5; i++)
               i.far.fa-star
-            | &nbsp;#{restaurant.rating}
+            | &nbsp;#{restaurant.rating.toFixed(1)}
           p= restaurant.address
           .card
             .card-header
@@ -31,22 +33,79 @@ block content
             .card-body
               - let key = process.env.GOOGLE_MAP_KEY
               img.img-fluid(src=`https://maps.googleapis.com/maps/api/staticmap?center=${restaurant.coords.lat},${restaurant.coords.lng}&zoom=17&size=400x350&sensor=false&markers=${restaurant.coords.lat},${restaurant.coords.lng}&scale=2&key=${key}`)
+      
+      .row.menu
+        .col-12
+          .card
+            .card-header
+              h5.card-title 메뉴
+            .card-body.menu
+              ul.list-group 
+                -var menuCheck = 0;
+                each menu in restaurant.menu  
+                  -menuCheck+=1;
+                  li 
+                    -if(menu.image == null)
+                      img.img(src=`${restaurant.image}` width="90px") 
+                    -else
+                      img.img(src=`${menu.image}` width="90px" height="90px")
+                    .name= menu.name  
+                    - if(menu.description == null) 
+                      br
+                    .description= menu.description
+                    .price #{menu.price} 원 
+                    -if(Object.keys(restaurant.menu).length != menuCheck) 
+                      hr  
+                -if(restaurant.menu == "")
+                    h5 메뉴가 아직 등록되지 않았습니다. 
       .row
         .col-12
           .card
-            .card-body
+            .card-header
               h5.card-title 리뷰
-              each review in restaurant.reviews
+            .card-body.review 
+              ul.list-group
+                -var reviewCheck = 0;
+                each review in restaurant.reviews
+                  -reviewCheck+=1;
+                  li 
+                    .row
+                      .col-12
+                        span.reviewAuthor #{review.author} 님 
+                        small.reviewTimestamp= review.createdOn 
+                      .col-12 
+                        span.reviewRating
+                          - let rating = review.rating
+                          - for (let i = 1; i <= rating; i++)
+                            i.fas.fa-star
+                          - for (let i = rating; i < 5; i++)
+                            i.far.fa-star 
+                      .col-12
+                        p !{(review.reviewText).replace(/\n/g, '<br />')}  
+                    -if(Object.keys(restaurant.reviews).length != reviewCheck) 
+                      hr 
+      .row.review
+        .col-12
+          .card
+            .card-header 
+              h5.card-title 리뷰 작성하기 
+            .card-body 
                 .row
-                  .col-12
-                    span.reviewRating
-                      - let rating = review.rating
-                      - for (let i = 1; i <= rating; i++)
-                        i.fas.fa-star
-                      - for (let i = rating; i < 5; i++)
-                        i.far.fa-star
-                    span.reviewAuthor= review.author
-                    small.reviewTimestamp= review.createdOn
-                  .col-12
-                    p !{(review.reviewText).replace(/\n/g, '<br />')}
-    
+                  .col-12 
+                    form(action="" method="post")
+                      .author 
+                        h5 작성자
+                        input(type="text" name="author")  
+                      .rating 
+                        h5 평점
+                        select(name="rating")                          
+                          option 5
+                          option 4
+                          option 3
+                          option 2
+                          option 1
+                      .reviewText 
+                        h5 리뷰내용
+                        input(type="text" name="reviewText") 
+                    
+                      button.btn.btn-outline-dark(type="submit") 작성하기

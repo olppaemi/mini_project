@@ -46,9 +46,15 @@
 
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/73764308/97802855-a8061400-1c89-11eb-8de3-b736beeacd8a.PNG" alt="REST API" width="300px" />
-    Figure 1. REST API를 통해 데이터베이스의 자원을 사용한다.
+    <img
+      src="https://user-images.githubusercontent.com/73764308/97802855-a8061400-1c89-11eb-8de3-b736beeacd8a.PNG"
+      alt="REST API" 
+      width="300px"
+    />
+
+                      Figure 1. REST API를 통해 데이터베이스의 자원을 사용한다.    
 </p>
+      
 
 * STAGE 5 어플리케이션 꾸미기
   * 사용자 입장에서 편하게 어플리케이션을 사용할 수 있도록 UI를 다듬는다.

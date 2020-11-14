@@ -1,0 +1,63 @@
+.card-body.review { 
+  padding: 0px ; 
+}
+.card-body.review>ul {
+  list-style: none; 
+  padding-right: 10px; 
+}
+.card-body.review>ul>li{
+  margin-top: 10px;
+  margin-left: 20px;   
+}
+.card-body.review>ul>li>div>div{
+  margin-top: 10px; 
+}
+span.reviewRating{
+  display: inline-block;
+  width: 120px;
+} 
+span.reviewAuthor{
+  display: inline-block;
+  width: 70px;
+} 
+.card-body.review>ul>li>hr{
+  margin-bottom: 0; 
+}
+.card-body.menu{ 
+  padding: 0px; 
+}
+.card-body.menu>ul{ 
+  list-style: none; 
+  padding-right: 10px;
+} 
+.card-body.menu>ul>h5{   
+  padding: 20px 20px;
+}
+.card-body.menu>ul>li{ 
+  padding-top: 10px;
+  padding-left: 20px;  
+  border-radius: 5px; 
+} 
+.card-body.menu>ul>li>.name{ 
+  font-size: 20px;
+}  
+.card-body.menu>ul>li>.img{ 
+  float: right;
+} 
+.card-body.menu>ul>li>.description{ 
+  color: gray;
+} 
+.card-body.menu>ul>li>hr{
+  margin-bottom: 0; 
+}
+.rating{
+  padding-top: 20px; 
+}
+.reviewText{
+  padding-top: 20px; 
+  padding-bottom: 20px; 
+}
+.reviewText>input{
+  width: 90%;
+  height: 200px;
+}

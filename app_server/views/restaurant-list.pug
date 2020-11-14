@@ -17,7 +17,7 @@ block content
                   h6 
                     a(href=`/${restaurant._id}`)= restaurant.name
                     i.fas.fa-star
-                    span= restaurant.rating
+                    span= restaurant.rating.toFixed(1)
                     span.badge.badge-pill.badge-dark.float-right= restaurant.distance
                   p.address= restaurant.address
     
