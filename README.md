@@ -13,7 +13,7 @@
   * :page_facing_up: 메인 페이지 
     * 음식 종류 선택 :pizza: :meat_on_bone: :coffee: :cake: :ramen: :hamburger:
     * 오늘의 추천 메뉴
-  * 맛집 리스트
+  * :page_facing_up: 맛집 리스트
     * 선택된 음식의 가까운 위치 맛집 리스트 
     * 해당 음식점 까지의 거리 
     * 총 평점 :star::star::star::star::star:
