@@ -35,10 +35,13 @@
 
 * STAGE 3 - <a href="https://ko.wikipedia.org/wiki/REST">REST API</a> 구축
 
-  | Collection      | Screen        | URL                      |
-  | --------------- | ------------- | ------------------------ |
-  | 음식점          | 음식점 리스트 | /restraunts              |
-  | 음식점 상세정보 | 음식점 정보   | /restruants/:restrauntid |
+  | Collection       | URL                                          | Action          |
+  | ---------------- | -------------------------------------------- | --------------- |
+  | 음식점           | /restaurants                                 | GET, POST       |
+  | 음식점 상세정보  | /restaurants/:restaurantid                   | GET, PUT, DELTE |
+  | 음식점 리뷰      | /restaurants/:restaurantid/reviews           | GET, POST       |
+  | 음식점 리뷰 정보 | /restaurants/:restaurantid/reviews/:reviewid | GET, PUT, DELTE |
+  | 음식점 메뉴      | /restaurants/:restaurantid/menu              | GET, POST       |
 
 * STAGE 4 - REST API를 이용해 데이터베이스와 어플리케이션 연동
 
