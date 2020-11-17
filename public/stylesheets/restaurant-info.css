@@ -50,14 +50,3 @@ span.reviewAuthor{
 .card-body.menu>ul>li>hr{
   margin-bottom: 0; 
 }
-.rating{
-  padding-top: 20px; 
-}
-.reviewText{
-  padding-top: 20px; 
-  padding-bottom: 20px; 
-}
-.reviewText>input{
-  width: 90%;
-  height: 200px;
-}

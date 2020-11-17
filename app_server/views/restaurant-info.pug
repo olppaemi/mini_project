@@ -8,7 +8,7 @@ block content
     .col-12
       h1= restaurant.name
   .row
-    .col-12.col-lg-10
+    .col-12.col-md-10
       .row
         .col-12.col-md-6
           p 
@@ -41,24 +41,23 @@ block content
             .card-header
               h5.card-title 메뉴
             .card-body.menu
-              ul.list-group 
-                -var menuCheck = 0;
-                each menu in restaurant.menu  
-                  -menuCheck+=1;
-                  li 
-                    -if(menu.image == null)
-                      img.img(src=`${restaurant.image}` width="90px") 
-                    -else
-                      img.img(src=`${menu.image}` width="90px" height="90px")
-                    .name= menu.name  
-                    - if(menu.description == null) 
-                      br
-                    .description= menu.description
-                    .price #{menu.price} 원 
-                    -if(Object.keys(restaurant.menu).length != menuCheck) 
-                      hr  
-                -if(restaurant.menu == "")
-                    h5 메뉴가 아직 등록되지 않았습니다. 
+              .row
+                each menu in restaurant.menu
+                  .col-12.col-md-6                      
+                    table
+                      colgroup
+                        col(width='100%')
+                        col(width='*')
+                      tr
+                        td
+                          h4.name= menu.name
+                          h5.price #{menu.price} 원
+                          h6.description= menu.description
+                        td
+                          - if (menu.image)
+                            img(src=`${menu.image}` width="100px")
+                -if (restaurant.menu.length === 0)
+                  .col-12 &nbsp; 메뉴가 아직 등록되지 않았습니다.
       .row
         .col-12
           .card
@@ -91,22 +90,25 @@ block content
             .card-header 
               h5.card-title 리뷰 작성하기 
             .card-body 
-                .row
-                  .col-12 
-                    form(action="" method="post")
-                      .author 
-                        h5 작성자
-                        input(type="text" name="author")  
-                      .rating 
-                        h5 평점
-                        select(name="rating")                          
+              .row
+                .col-12 
+                  form(action="" method="post")
+                    .from-group.row.m-1
+                      label.col-10.col-md-2.col-form-label(for="name") 작성자
+                      .col-12.col-md-5
+                        input#name.form-control(type="text" name="author") 
+                    .from-group.row.m-1
+                      label.col-10.col-md-2.col-form-label(for="rating") 평점
+                      .col-12.col-md-2
+                        select#rating.form-control.input-sm(name="rating")                          
                           option(value='5') 5
                           option(value='4') 4
                           option(value='3') 3
                           option(value='2') 2
                           option(value='1') 1
-                      .reviewText 
-                        h5 리뷰내용
-                        input(type="text" name="reviewText") 
-                    
-                      button.btn.btn-outline-dark(type="submit") 작성하기
+                    .form-group.row.m-1
+                      label.col-10.col-md-2.col-form-label(for="reviewText") 리뷰내용
+                      .col-12.col-md-10
+                        textarea#review.form-control(name="reviewText" rows="5")
+                    button.btn.btn-outline-dark.float-right(type="submit") 작성하기
+    .col-12.col-md-2
