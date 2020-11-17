@@ -60,7 +60,8 @@ const restaurantsCreate = (req, res) => {
       ]
     },
     openingTime: req.body.openingTime,
-    phone: req.body.phone
+    phone: req.body.phone,
+    image: req.body.image
   }, (err, restaurant) => {
     if (err) {
       res.status(400).json(err);

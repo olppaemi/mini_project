@@ -26,7 +26,6 @@ router
   .put(ctrlReviews.reviewsUpdateOne)
   .delete(ctrlReviews.reviewsDeleteOne);
 
-
 // menu
 router
   .route('/restaurants/:restaurantid/menu')

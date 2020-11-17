@@ -28,12 +28,12 @@
     * 리뷰 :speech_balloon:
     * 사진(옵션) :camera:
 
-* STAGE 2 - 데이터 모델링과 데이터베이스 구축
+* STAGE 2 - [데이터 모델링](https://github.com/olppaemi/mini_project/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%AA%A8%EB%8D%B8%EB%A7%81)과 데이터베이스 구축
 
   * 음식점 관련 정보를 파악하여 데이터화 한다.
   * 클라우드에 데이터 베이스를 구축해 본다.
 
-* STAGE 3 - <a href="https://ko.wikipedia.org/wiki/REST">REST API</a> 구축
+* STAGE 3 - <a href="https://github.com/olppaemi/mini_project/wiki/REST-API">REST API</a> 구축
 
   | Collection       | URL                                          | Action          |
   | ---------------- | -------------------------------------------- | --------------- |
