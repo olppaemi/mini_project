@@ -4,7 +4,7 @@ block styles
   link(rel='stylesheet', href='/stylesheets/restaurant-info.css')   
  
 block content
-  .row.banner
+  .row.banner.mt-3
     .col-12
       h1= restaurant.name
   .row
@@ -24,7 +24,7 @@ block content
               h5.card-title 영업시간
             .card-body
               p.card-text= restaurant.openingTime
-          .card
+          .card.mt-3
             .card-header
               h5.card-title 전화번호
             .card-body              
@@ -35,35 +35,35 @@ block content
               - let key = process.env.GOOGLE_MAP_KEY
               img.img-fluid(src=`https://maps.googleapis.com/maps/api/staticmap?center=${restaurant.coords.lat},${restaurant.coords.lng}&zoom=17&size=400x350&sensor=false&markers=${restaurant.coords.lat},${restaurant.coords.lng}&scale=2&key=${key}`)
       
-      .row.menu
-        .col-12
-          .card
-            .card-header
-              h5.card-title 메뉴
-            .card-body.menu
-              .row
-                each menu in restaurant.menu
-                  .col-12.col-md-6                      
-                    table
-                      colgroup
-                        col(width='100%')
-                        col(width='*')
-                      tr
-                        td
-                          h4.name= menu.name
-                          h5.price #{menu.price} 원
-                          h6.description= menu.description
-                        td
-                          - if (menu.image)
-                            img(src=`${menu.image}` width="100px")
-                -if (restaurant.menu.length === 0)
-                  .col-12 &nbsp; 메뉴가 아직 등록되지 않았습니다.
       .row
         .col-12
-          .card
-            .card-header
-              h5.card-title 리뷰
-            .card-body.review 
+          .card.mt-3
+            .card-header.btn.bg-dark.text-white(data-toggle="collapse" data-target="#collapseMenu")
+              i.fa.fa-chevron-down.float-right
+              | 메뉴              
+            #collapseMenu.collapse.show  
+              .card-body
+                .row
+                  each menu in restaurant.menu
+                    .col-12.col-md-6
+                      .container-fluid
+                        .row.p-1.m-1
+                          .col-9
+                            h4.name= menu.name
+                            h5.price #{menu.price} 원
+                            h6.description= menu.description
+                          .col-3
+                            - if (menu.image)
+                              img(src=`${menu.image}` width="100px")    
+                  -if (restaurant.menu.length === 0)
+                    .col-12.p-3 &nbsp; 메뉴가 아직 등록되지 않았습니다.
+      .row
+        .col-12
+          .card.mt-3
+            .card-header.bg-dark.text-white.btn.btn-link(data-toggle="collapse" data-target="#collapseReview")        
+              i.fa.fa-chevron-down.float-right
+              | 리뷰
+            #collapseReview.card-body.review.collapse.show
               ul.list-group
                 -var reviewCheck = 0;
                 each review in restaurant.reviews
@@ -84,15 +84,18 @@ block content
                         p !{(review.reviewText).replace(/\n/g, '<br />')}  
                     -if(Object.keys(restaurant.reviews).length != reviewCheck) 
                       hr 
-      .row.review
+      .row
         .col-12
-          .card
-            .card-header 
-              h5.card-title 리뷰 작성하기 
-            .card-body 
+          .card.mt-3
+            .card-header.btn.btn-link.bg-dark.text-white(data-toggle="collapse" data-target="#collapseNewReview")
+              i.fa.fa-chevron-down.float-right
+              | 리뷰 작성하기
+            #collapseNewReview.card-body.collapse.show
               .row
                 .col-12 
-                  form(action="" method="post")
+                  form#addReview(action="" method="post")
+                    - if (error == "val")
+                      .alert.alert-danger(role="alert") 모든 입력이 채워져야 합니다. 입력을 확인해주세요.
                     .from-group.row.m-1
                       label.col-10.col-md-2.col-form-label(for="name") 작성자
                       .col-12.col-md-5
@@ -112,3 +115,6 @@ block content
                         textarea#review.form-control(name="reviewText" rows="5")
                     button.btn.btn-outline-dark.float-right(type="submit") 작성하기
     .col-12.col-md-2
+
+  block scripts
+    script(src='/javascripts/validation.js')

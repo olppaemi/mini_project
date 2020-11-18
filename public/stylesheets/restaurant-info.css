@@ -50,3 +50,7 @@ span.reviewAuthor{
 .card-body.menu>ul>li>hr{
   margin-bottom: 0; 
 }
+
+.card-header.collapsed .fa {
+  transform: rotate(90deg);
+}

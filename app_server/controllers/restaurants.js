@@ -80,7 +80,8 @@ const showError = (req, res, status) => {
 
 const renderRestaurantInfo = (req, res, restaurant) => {
   res.render('restaurant-info', {
-    restaurant
+    restaurant,
+    error: req.query.err
   });
 };
 
@@ -118,6 +119,9 @@ const addReview = (req, res) => {
     method: 'POST',
     json: postdata
   };
+  if (!postdata.author || !postdata.rating || !postdata.reviewText) {
+    res.redirect(`/${restaurantid}?err=val`);
+  }
   request(requestOptions, (err, {statusCode}, body) => {
     if (statusCode === 201) {
       res.redirect(`/${restaurantid}`);
