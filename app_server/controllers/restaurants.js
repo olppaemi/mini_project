@@ -119,9 +119,9 @@ const addReview = (req, res) => {
     method: 'POST',
     json: postdata
   };
-  if (!postdata.author || !postdata.rating || !postdata.reviewText) {
-    res.redirect(`/${restaurantid}?err=val`);
-  }
+  // if (!postdata.author || !postdata.rating || !postdata.reviewText) {
+  //   res.redirect(`/${restaurantid}?err=val`);
+  // }
   request(requestOptions, (err, {statusCode}, body) => {
     if (statusCode === 201) {
       res.redirect(`/${restaurantid}`);
